@@ -40,7 +40,7 @@ impl ToCss for CSSNumber {
       cssparser::ToCss::to_css(self, &mut s)?;
       if number < 0.0 {
         dest.write_char('-')?;
-        dest.write_str(s.trim_start_matches("-0"))
+        dest.write_str(s.trim_start_matches("-").trim_start_matches("0"))
       } else {
         dest.write_str(s.trim_start_matches('0'))
       }
